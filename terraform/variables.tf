@@ -4,7 +4,7 @@ variable "aws_region" {
 
 variable "ingress_rules" {
   type    = list(number)
-  default = [3000]
+  default = [3000, 22, 443, 80, 8080]
 }
 
 variable "project_name" {

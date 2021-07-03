@@ -13,4 +13,7 @@ RUN npm run build
 FROM base as production
 COPY --from=builder /app/remote-config-server/dist ./dist
 RUN npm i --production
+
+EXPOSE 3000
+
 CMD ["npm", "start"]

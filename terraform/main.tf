@@ -69,25 +69,21 @@ resource "aws_instance" "instance" {
   security_groups = [aws_security_group.sg.name]
   key_name        = var.key_pair_name
 
-  # provisioner "remote-exec" {
-  #   inline = [
-  #     "sudo yum update -y",
-  #     "sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo",
-  #     "sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key",
-  #     "sudo yum upgrade",
-  #     "sudo yum install jenkins java-1.8.0-openjdk-devel -y",
-  #     "sudo systemctl daemon-reload",
-  #     "sudo systemctl start jenkins",
-  #     "sudo systemctl status jenkins",
-  #   ]
-  # }
+  provisioner "remote-exec" {
+    inline = [
+      "sudo yum update -y",
+      "sudo amazon-linux-extras install docker -y",
+      "sudo service docker start",
+      "sudo docker run -d -p 3000:3000 shyss/remote-config"
+    ]
+  }
 
-  # connection {
-  #   type        = "ssh"
-  #   host        = self.public_ip
-  #   user        = "ec2-user"
-  #   private_key = file("./devops.pem")
-  # }
+  connection {
+    type        = "ssh"
+    host        = self.public_ip
+    user        = "ec2-user"
+    private_key = file("./devops.pem")
+  }
 
   tags = {
     "Name"      = join("_", [var.project_name, "instance"])

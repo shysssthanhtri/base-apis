@@ -3,3 +3,4 @@ terraform/credentials.tf
 terraform/.terraform
 terraform/.terraform.lock.hcl
 terraform/devops.pem
+dist

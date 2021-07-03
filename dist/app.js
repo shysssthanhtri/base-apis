@@ -45,6 +45,10 @@ var app = function () { return __awaiter(void 0, void 0, void 0, function () {
     var server;
     return __generator(this, function (_a) {
         server = express_1.default();
+        server.use("/ping", function (req, res) {
+            console.log(req.url);
+            res.send("PONG");
+        });
         return [2 /*return*/, server.listen(3000, function () {
                 console.log("Server is running");
             })];

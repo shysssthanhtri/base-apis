@@ -37,16 +37,12 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var app_1 = require("./app");
-var shutdown_1 = require("./core/shutdown");
 var main = function () { return __awaiter(void 0, void 0, void 0, function () {
-    var server;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0: return [4 /*yield*/, app_1.app()];
             case 1:
-                server = _a.sent();
-                process.on("SIGINT", function () { return shutdown_1.shutdown(server); });
-                process.on("SIGTERM", function () { return shutdown_1.shutdown(server); });
+                _a.sent();
                 return [2 /*return*/];
         }
     });
