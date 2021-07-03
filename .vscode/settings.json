@@ -1,0 +1,6 @@
+{
+  // Editor - Code
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true
+  }
+}

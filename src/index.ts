@@ -1,7 +1,7 @@
-import { app } from "./app"
+import { app } from "./app";
 
 const main = async () => {
-  app();
-}
+	app();
+};
 
 main();
