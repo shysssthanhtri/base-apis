@@ -1,4 +1,9 @@
 {
+  // Run on Save
+  "runOnSave.commands": [
+    //
+  ],
+
   // Editor - Code
   "editor.codeActionsOnSave": {
     "source.fixAll": true

@@ -45,10 +45,9 @@ var app = function () { return __awaiter(void 0, void 0, void 0, function () {
     var server;
     return __generator(this, function (_a) {
         server = express_1.default();
-        server.listen(3000, function () {
-            console.log("Server is running");
-        });
-        return [2 /*return*/];
+        return [2 /*return*/, server.listen(3000, function () {
+                console.log("Server is running");
+            })];
     });
 }); };
 exports.app = app;
