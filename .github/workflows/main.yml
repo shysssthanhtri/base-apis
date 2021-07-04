@@ -34,16 +34,19 @@ jobs:
         run: terraform validate -no-color
       - name: Execute resource ECR to create repo if not exists
         id: ecr
-        run: |
-          terraform apply -target=aws_ecr_repository.ecr -auto-approve
-          echo "::set-output name=SELECTED_COLOR::$(terraform output aws_ecr_name)"
+        run: terraform apply -target=aws_ecr_repository.ecr -auto-approve
         env:
           TF_VAR_aws_access_key: ${{ secrets.AWS_ACCESS_KEY }}
           TF_VAR_aws_secret_key: ${{ secrets.AWS_SECRET_KEY }}
           TF_VAR_aws_ecr_name: ${{ secrets.AWS_ECR_REPOSITORY }}
           TF_VAR_aws_region: ${{ secrets.AWS_REGION }}
+      - name: Get outputs
+        uses: dflook/terraform-output@v1
+        id: tf-outputs
+        with:
+          path: outputs.tf
       - name: Test output
-        run: echo "${{ steps.ecr.outputs.SELECTED_COLOR }}"
+        run: echo "${{ steps.tf-outputs.outputs.aws_ecr_name }}"
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
