@@ -44,7 +44,7 @@ jobs:
         uses: dflook/terraform-output@v1
         id: tf-outputs
         with:
-          path: ./outputs.tf
+          path: ../outputs.tf
       - name: Test output
         run: echo "${{ steps.tf-outputs.outputs.aws_ecr_name }}"
       - name: Configure AWS credentials
