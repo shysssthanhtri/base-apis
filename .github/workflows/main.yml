@@ -47,7 +47,8 @@ jobs:
       - name: Test output
         run: |
           echo "${{ steps.ecr.outputs.aws_ecr_name }}"
-          echo "$(terraform output aws_ecr_name)"
+          output=$(terraform output aws_ecr_name)
+          echo $output
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
