@@ -8,12 +8,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - uses: docker://ghcr.io/kciter/aws-ecr-action:latest
+    - uses: kciter/aws-ecr-action@master
       with:
         access_key_id: ${{ secrets.AWS_ACCESS_KEY }}
         secret_access_key: ${{ secrets.AWS_SECRET_KEY }}
         account_id: ${{ secrets.AWS_ACCOUNT_ID }}
-        repo: remote_config-ecr
+        repo: shyss/remote-config
         region: us-east-1
         tags: latest,${{ github.sha }}
         create_repo: true
