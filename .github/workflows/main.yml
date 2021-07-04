@@ -1,0 +1,21 @@
+name: CI/CD
+on:
+  push:
+    branches:
+      - master
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: docker://ghcr.io/kciter/aws-ecr-action:latest
+      with:
+        access_key_id: ${{ secrets.AWS_ACCESS_KEY }}
+        secret_access_key: ${{ secrets.AWS_SECRET_KEY }}
+        repo: remote_config-ecr
+        region: us-east-1
+        tags: latest,${{ github.sha }}
+        create_repo: true
+        set_repo_policy: true
+        repo_policy_file: repo-policy.json
+      
