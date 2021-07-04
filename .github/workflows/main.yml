@@ -20,7 +20,7 @@ jobs:
       cdEnable: ${{ secrets.CD_ENABLE }}
     name: "Deployment"
     runs-on: ubuntu-latest
-    if: ${{ env.cdEnable }} == "true" && github.ref == 'refs/heads/master'
+    if: ${{ secrets.CD_ENABLE }} == "true" && github.ref == 'refs/heads/master'
     needs:
       - ci
     steps:
