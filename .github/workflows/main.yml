@@ -36,7 +36,7 @@ jobs:
         id: ecr
         run: |
           terraform apply -target=aws_ecr_repository.ecr -auto-approve
-          echo "::set-output name=SELECTED_COLOR::$(terraform output aws_ecr_name)"
+          echo "::set-output name=SELECTED_COLOR::hello"
         env:
           TF_VAR_aws_access_key: ${{ secrets.AWS_ACCESS_KEY }}
           TF_VAR_aws_secret_key: ${{ secrets.AWS_SECRET_KEY }}
