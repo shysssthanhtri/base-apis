@@ -39,7 +39,7 @@ jobs:
           TF_VAR_aws_access_key: ${{ secrets.AWS_ACCESS_KEY }}
           TF_VAR_aws_secret_key: ${{ secrets.AWS_SECRET_KEY }}
       - name: Test output
-        run: echo ${{ step.ecr.outputs }}
+        run: echo ${{ steps.ecr.outputs }}
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
