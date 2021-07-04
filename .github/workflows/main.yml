@@ -2,7 +2,8 @@ name: CI/CD
 on:
   push:
     branches:
-      - master
+      - "*"
+  pull_request:
 jobs:
   ci:
     name: CI
@@ -19,6 +20,7 @@ jobs:
   cd:
     name: "Deployment"
     runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master'
     needs:
       - ci
     steps:
