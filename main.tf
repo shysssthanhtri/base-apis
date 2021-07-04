@@ -18,7 +18,7 @@ provider "aws" {
 }
 
 resource "aws_ecr_repository" "ecr" {
-  name                 = join("-", [var.project_name, "ecr"])
+  name                 = var.aws_ecr_name
   image_tag_mutability = "MUTABLE"
 
   image_scanning_configuration {
