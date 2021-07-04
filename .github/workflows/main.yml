@@ -40,23 +40,23 @@ jobs:
         env:
           TF_VAR_aws_access_key: ${{ secrets.AWS_ACCESS_KEY }}
           TF_VAR_aws_secret_key: ${{ secrets.AWS_SECRET_KEY }}
-      # - name: Configure AWS credentials
-      #   uses: aws-actions/configure-aws-credentials@v1
-      #   with:
-      #     aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
-      #     aws-secret-access-key: ${{ secrets.AWS_SECRET_KEY }}
-      #     aws-region: ${{ secrets.AWS_REGION }}
-      # - name: Login to Amazon ECR
-      #   id: login-ecr
-      #   uses: aws-actions/amazon-ecr-login@v1
-      # - name: Build, tag, and push image to Amazon ECR
-      #   id: build-image
-      #   env:
-      #     ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-      #     AWS_ECR_REPOSITORY: ${{ secrets.AWS_ECR_REPOSITORY }}
-      #     IMAGE_TAG: latest
-      #   run: |
-      #     docker build -t $ECR_REGISTRY/$AWS_ECR_REPOSITORY:$IMAGE_TAG .
-      #     docker push $ECR_REGISTRY/$AWS_ECR_REPOSITORY:$IMAGE_TAG
-      #     echo "::set-output name=image::$ECR_REGISTRY/$AWS_ECR_REPOSITORY:$IMAGE_TAG"
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v1
+      - name: Build, tag, and push image to Amazon ECR
+        id: build-image
+        env:
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          AWS_ECR_REPOSITORY: ${{ secrets.AWS_ECR_REPOSITORY }}
+          IMAGE_TAG: latest
+        run: |
+          docker build -t $ECR_REGISTRY/$AWS_ECR_REPOSITORY:$IMAGE_TAG .
+          docker push $ECR_REGISTRY/$AWS_ECR_REPOSITORY:$IMAGE_TAG
+          echo "::set-output name=image::$ECR_REGISTRY/$AWS_ECR_REPOSITORY:$IMAGE_TAG"
       
