@@ -20,11 +20,11 @@ jobs:
       cdEnable: ${{ secrets.CD_ENABLE }}
     name: "Deployment"
     runs-on: ubuntu-latest
-    if: ${{ secrets.CD_ENABLE }} == "true" && github.ref == 'refs/heads/master'
     needs:
       - ci
     steps:
       - name: Checkout code
+        if: ${{ env.cdEnable }} == "true" && github.ref == 'refs/heads/master'
         uses: actions/checkout@v2
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v1
