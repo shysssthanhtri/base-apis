@@ -35,6 +35,8 @@ jobs:
       - name: Terraform Validate
         id: validate
         run: terraform validate -no-color
+      - name: Execute resource ECR to create repo if not exists
+        run: terraform apply -target=aws_ecr_repository.ecr -auto-approve
       # - name: Configure AWS credentials
       #   uses: aws-actions/configure-aws-credentials@v1
       #   with:
