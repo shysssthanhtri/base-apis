@@ -31,7 +31,3 @@ variable "aws_access_key" {
 variable "aws_secret_key" {
   type = string
 }
-
-variable "aws_ecr_name" {
-  type = string
-}
