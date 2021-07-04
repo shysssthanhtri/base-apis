@@ -4,6 +4,8 @@ import http from "http";
 const app = async (): Promise<http.Server> => {
 	const server = express();
 
+	const a = '';
+
 	server.use("/ping", (req, res) => {
 		console.log(req.url);
 		res.send("PONG");
