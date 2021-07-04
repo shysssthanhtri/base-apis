@@ -10,7 +10,7 @@ const app = async (): Promise<http.Server> => {
 	});
 
 	return	server.listen(3000, () => {
-		console.log("Server is running");
+		console.log("Server is running...");
 	});
 };
 
