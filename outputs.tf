@@ -1,8 +1,3 @@
-variable "test" {
-  default = "test"
-}
-
-output "test" {
-  # value = aws_ecr_repository.ecr.name
-  value = "test"
+output "aws_ecr_name" {
+  value = aws_ecr_repository.ecr.name
 }

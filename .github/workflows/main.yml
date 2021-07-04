@@ -46,8 +46,7 @@ jobs:
           TF_VAR_aws_region: ${{ secrets.AWS_REGION }}
       - name: Test output
         run: |
-          echo "${{ steps.ecr.outputs.aws_ecr_name }}"
-          output=$(terraform output test)
+          output=$(terraform output aws_ecr_name)
           echo $output
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
