@@ -16,9 +16,11 @@ jobs:
       - name: Test
         run: echo "Testing..."
   cd:
+    env:
+      cdEnable: ${{ secrets.CD_ENABLE }}
     name: "Deployment"
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/master'
+    if: ${{ env.cdEnable }} == "true" && github.ref == 'refs/heads/master'
     needs:
       - ci
     steps:
