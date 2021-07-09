@@ -1,0 +1,12 @@
+version: "3.9"  # optional since v1.27.0
+services:
+  api:
+    build: .
+    ports:
+      - "3000:3000"
+    # links:
+    #   - dynamo
+  # dynamo:
+  #   image: amazon/dynamodb-local
+  #   ports:
+  #     - "8000:8000"
