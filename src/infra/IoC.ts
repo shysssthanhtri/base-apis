@@ -3,8 +3,12 @@ import "reflect-metadata";
 import { BindingScopeEnum, Container } from "inversify";
 
 
-const ServiceContainer = new Container( {
+const IoC = new Container({
   defaultScope: BindingScopeEnum.Singleton,
-} );
+});
 
-export default ServiceContainer;
+export enum IOC_NAME {
+  SAMPLE_SERVICE = "sample-service",
+}
+
+export default IoC;

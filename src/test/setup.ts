@@ -1,6 +1,6 @@
 import { config } from "dotenv";
 
 
-config( {
+config({
   path: "src/test/.env.test",
-} );
+});

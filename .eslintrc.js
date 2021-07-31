@@ -70,7 +70,7 @@ module.exports = {
         ignoreComments: false,
       }
     ],
-    "space-in-parens": ["error", "always"],
+    "space-in-parens": ["error", "never"],
 
     // Conflicts with "import/order"
     // => Use "eslint-plugin-simple-import-sort"

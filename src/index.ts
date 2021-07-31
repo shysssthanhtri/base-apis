@@ -1,19 +1,20 @@
-import { app } from "app";
+import { Application } from "app";
+import IoC from "infra/IoC";
 
 
 const main = async () => {
 
-  const server =	await app();
+  const application = new Application(IoC);
 
-  process.on( "SIGINT", () => {
-    console.log( "Shutting down..." );
-    server.close();
-  } );
+  process.on("SIGINT", () => {
+    console.log("Shutting down...");
+    application.close();
+  });
 
-  process.on( "SIGTERM", () => {
-    console.log( "Shutting down..." );
-    server.close();
-  } );
+  process.on("SIGTERM", () => {
+    console.log("Shutting down...");
+    application.close();
+  });
 };
 
 main();
