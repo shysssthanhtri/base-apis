@@ -8,7 +8,8 @@ const IoC = new Container({
 });
 
 export enum IOC_NAME {
-  TITLE_PERSISTENCE = "title-persistence"
+  SAMPLE_SERVICE = "sample-service",
+  TITLE_PERSISTENCE = "title-persistence",
 }
 
 export default IoC;
