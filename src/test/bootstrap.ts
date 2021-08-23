@@ -1,6 +1,8 @@
 import "reflect-metadata";
 
+import { logger } from "utils/logger";
+
 
 beforeAll(async () => {
-  console.log("Ready fot test...");
+  logger.info("Ready fot test...");
 });

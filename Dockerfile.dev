@@ -1,0 +1,12 @@
+# Base
+FROM node:alpine as base
+WORKDIR /usr/src/app
+COPY ./package*.json .
+
+# Production
+FROM base as development
+RUN npm i
+
+EXPOSE 3000
+
+CMD ["npm", "run", "dev:compose"]

@@ -1,6 +1,6 @@
 # Base
 FROM node:alpine as base
-WORKDIR /app/remote-config-server
+WORKDIR /usr/src/app
 COPY ./package*.json .
 
 # Builder
@@ -11,7 +11,7 @@ RUN npm run build
 
 # Production
 FROM base as production
-COPY --from=builder /app/remote-config-server/dist ./dist
+COPY --from=builder /usr/src/app/dist ./dist
 RUN npm ci --production
 
 EXPOSE 3000
